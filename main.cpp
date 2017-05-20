@@ -82,17 +82,17 @@ public:
           host = optarg;
           break;
         }
-        
+
         case 'm': {
           mbox = optarg;
           break;
         }
-        
+
         case 'n': {
           ns = optarg;
           break;
         }
-        
+ 
         case 't': {
           int n = strtol(optarg, NULL, 10);
           if (n > 0 && n < 1000) nThreads = n;
@@ -406,9 +406,9 @@ static const string testnet_seeds[] = {"testnet-seed.alexykot.me",
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
-  if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
-  }
+  //if (!fTestNet){
+    //db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
+  //}
   do {
     for (int i=0; seeds[i] != ""; i++) {
       vector<CNetAddr> ips;
@@ -459,10 +459,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0x0b;
-      pchMessageStart[1] = 0x11;
-      pchMessageStart[2] = 0x09;
-      pchMessageStart[3] = 0x07;
+      pchMessageStart[0] = 0xbf;
+      pchMessageStart[1] = 0xf2;
+      pchMessageStart[2] = 0xcd;
+      pchMessageStart[3] = 0xe6;
       seeds = testnet_seeds;
       fTestNet = true;
   }
